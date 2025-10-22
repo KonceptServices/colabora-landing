@@ -1,13 +1,11 @@
 import {heroui} from "@heroui/theme"
 
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: [
-    "./index.html",
-    './src/layouts/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -22,11 +20,12 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Cormorant Garamond", "sans-serif"],
-        poppins: ["Poppins", "sans-serif"],
+        poppins: ["var(--font-poppins)"],
+        "cormorant-garamond": ["var(--font-cormorant-garamond)"],
       },
     },
   },
-  darkMode: "class",
   plugins: [heroui()],
 }
+
+module.exports = config;
