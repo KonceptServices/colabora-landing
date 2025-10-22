@@ -61,9 +61,7 @@ export default function CustomNavbar() {
       </NavbarContent>
 
       <NavbarContent justify="end" className="md:hidden text-white">
-        <div>
-          <NavbarMenuToggle />
-        </div>
+        <NavbarMenuToggle />
       </NavbarContent>
 
       <NavbarMenu className="bg-black/20 backdrop-blur-md">
