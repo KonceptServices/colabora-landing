@@ -31,7 +31,7 @@ export const footerData = {
 };
 
 export const contactData = {
-  title: "Preguntas?",
+  title: "¿Preguntas?",
   subtitle: "Estamos aquí para ayudarte.",
   scheduleCall: {
     text: "Programar una llamada",

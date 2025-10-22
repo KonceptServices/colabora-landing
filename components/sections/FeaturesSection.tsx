@@ -5,6 +5,7 @@ import { featuresData } from "@/data/content";
 
 export default function FeaturesSection() {
   const [activeStep, setActiveStep] = useState(0);
+  const [mobileActiveStep, setMobileActiveStep] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -35,6 +36,33 @@ export default function FeaturesSection() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activeStep]);
 
+  // Listener para scroll horizontal en móvil
+  useEffect(() => {
+    const handleHorizontalScroll = () => {
+      if (!scrollContainerRef.current) return;
+
+      const container = scrollContainerRef.current;
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = 320; // w-80 = 320px
+      const gap = 16; // gap-4 = 16px
+      const totalCardWidth = cardWidth + gap;
+      
+      // Calcular qué card está más visible
+      const cardIndex = Math.round(scrollLeft / totalCardWidth);
+      const clampedIndex = Math.max(0, Math.min(featuresData.length - 1, cardIndex));
+      
+      if (clampedIndex !== mobileActiveStep) {
+        setMobileActiveStep(clampedIndex);
+      }
+    };
+
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleHorizontalScroll);
+      return () => container.removeEventListener('scroll', handleHorizontalScroll);
+    }
+  }, [mobileActiveStep]);
+
   const currentStep = featuresData[activeStep];
 
   return (
@@ -52,8 +80,12 @@ export default function FeaturesSection() {
         <div className="px-4 py-8">
           <div 
             ref={scrollContainerRef}
-            className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide"
-            style={{ scrollSnapType: 'x mandatory' }}
+            className="flex gap-4 overflow-x-auto pb-4 [&::-webkit-scrollbar]:hidden"
+            style={{ 
+              scrollSnapType: 'x mandatory',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
+            }}
           >
             {featuresData.map((feature, index) => (
               <div
@@ -85,7 +117,7 @@ export default function FeaturesSection() {
               <div
                 key={index}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  index === activeStep 
+                  index === mobileActiveStep 
                     ? 'w-8 bg-secondary-500' 
                     : 'w-2 bg-gray-300'
                 }`}
