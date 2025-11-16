@@ -31,7 +31,7 @@ export default function TariffsSection() {
             return (
               <div
                 key={card.id}
-                className={`relative rounded-2xl md:rounded-3xl overflow-hidden transition-all duration-500 min-h-[400px] md:min-h-[500px] ${
+                className={`relative rounded-2xl shadow-2xl md:rounded-3xl overflow-hidden transition-all duration-500 min-h-[400px] md:min-h-[500px] ${
                   isExpanded ? 'bg-gray-900' : ''
                 }`}
                 style={{
@@ -44,7 +44,7 @@ export default function TariffsSection() {
                 {isExpanded && (
                   <div className="absolute inset-0 bg-gray-900 flex items-center justify-center p-4 md:p-8">
                     <div className="text-center text-white">
-                      <h3 className="text-xl md:text-2xl font-medium mb-4 md:mb-6">{card.expandedTitle}</h3>
+                      <h3 className="text-md md:text-lg font-medium mb-4 md:mb-6 font-poppins">{card.expandedTitle}</h3>
                       <div className="text-left text-sm md:text-base leading-relaxed opacity-90 max-w-sm">
                         {card.expandedDescription.split('\n').map((line, index) => (
                           <p key={index} className="mb-2">

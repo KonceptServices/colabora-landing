@@ -1,6 +1,6 @@
 export const heroData = {
   title: "El espacio que necesitas para crecer a tu ritmo.",
-  subtitle: "Oficinas privadas, coworking y salas de reunión listas para entrar. Servicios premium y comunidad creativa en el centro de la ciudad.",
+  subtitle: "Oficinas privadas y salas de reunión listas para entrar. Servicios premium y comunidad creativa en Tres Cantos.",
 };
 
 export const footerData = {
@@ -40,6 +40,10 @@ export const contactData = {
   sendMessage: {
     text: "Enviar un mensaje",
     url: "#message"
+  },
+  location: {
+    address: "Poligono Ar, 115, 28760 Tres Cantos, Madrid",
+    mapUrl: "#"
   }
 };
 
@@ -77,32 +81,32 @@ export const tariffsData = {
       image: "/tariffs/1.jpeg",
       description: "Perfecto para emprendedores y freelancers que buscan un espacio profesional.",
       expandedTitle: "Tipo 1 - 400€/mes",
-      expandedDescription: "• Puesto de trabajo individual\n• Acceso a todas las instalaciones\n• Conexión fibra óptica incluida\n• Seguridad 24h y acceso 365 días\n• Servicios básicos de impresión\n• Zona de networking y cocina"
+      expandedDescription: "• Puesto de trabajo individual\n• Mobiliario premium incluido\n• Acceso a todas las instalaciones\n• Conexión fibra óptica incluida\n• Seguridad 24h y acceso 365 días\n• Recepción de correo y paquetería\n• Zona de networking y cocina\n• Servicios básicos de impresión\n• 10 horas incluidas sala de juntas\n• Domiciliación social y fiscal incluida"
     },
     {
       id: "tipo2",
       image: "/tariffs/2.jpeg", 
       description: "Ideal para pequeños equipos que necesitan más espacio y flexibilidad.",
       expandedTitle: "Tipo 2 - 500€/mes",
-      expandedDescription: "• Espacio ampliado para 2-3 personas\n• Mobiliario premium incluido\n• Mayor espacio de almacenamiento\n• 5 horas adicionales sala de juntas\n• Servicios de impresión ilimitados\n• Posibilidad de domiciliación fiscal"
+      expandedDescription: "• Todos los servicios incluidos en el Tipo 1\n• Espacio ampliado para 2-3 personas\n• Mayor espacio de almacenamiento\n• 5 horas adicionales sala de juntas\n• Servicios avanzados de impresión"
     },
     {
       id: "tipo3",
       image: "/tariffs/3.jpeg",
       description: "La opción premium para empresas establecidas que buscan máximo confort.",
       expandedTitle: "Tipo 3 - 600€/mes",
-      expandedDescription: "• Oficina privada para 4-6 personas\n• Mobiliario ejecutivo de alta gama\n• Espacio de almacenamiento amplio\n• 15 horas mensuales sala de juntas\n• Servicios premium de conserjería\n• Domiciliación social y fiscal incluida"
+      expandedDescription: "• Todos los servicios incluidos en el Tipo 2\n• Oficina privada para 4-6 personas\n• Mayor espacio de almacenamiento\n• 5 horas adicionales sala de juntas\n• Servicios premium de impresión"
     }
   ]
 };
 
 export const featuresData = [
   {
-    id: "internet",
-    title: "Fibra Óptica",
-    subtitle: "Conectividad de alta velocidad",
-    description: "Conexión a internet de banda ancha por fibra óptica para garantizar la máxima velocidad y estabilidad en todas tus actividades profesionales.",
-    image: "/features/internet.jpeg",
+    id: "access",
+    title: "Acceso Total",
+    subtitle: "Disponible cuando lo necesites",
+    description: "Acceso 24 horas / 365 días al año. Tu oficina está disponible cuando tú la necesites, sin restricciones de horario.",
+    image: "/features/open.jpeg",
   },
   {
     id: "security",
@@ -110,13 +114,6 @@ export const featuresData = [
     subtitle: "Protección total garantizada",
     description: "Seguridad 24 horas con personal especializado y sistemas de vigilancia avanzados para tu tranquilidad y la de tus pertenencias.",
     image: "/features/security.jpeg",
-  },
-  {
-    id: "access",
-    title: "Acceso Total",
-    subtitle: "Disponible cuando lo necesites",
-    description: "Acceso 24 horas / 365 días al año. Tu oficina está disponible cuando tú la necesites, sin restricciones de horario.",
-    image: "/features/open.jpeg",
   },
   {
     id: "printing",
@@ -140,6 +137,25 @@ export const featuresData = [
     image: "/features/kitchen.jpeg",
   },
   {
+    id: "meeting-room",
+    title: "Sala de Juntas",
+    subtitle: "Espacios para reuniones",
+    description: "10 horas mensuales de sala de juntas incluidas, perfectamente equipada para tus presentaciones y reuniones importantes.",
+    image: "/features/meeting.jpeg",
+    additionalPricing: {
+      hourly: "25 € / hora",
+      daily: "200 € / día",
+      bonus: "200 € / bono 10 horas"
+    }
+  },
+  {
+    id: "internet",
+    title: "Fibra Óptica",
+    subtitle: "Conectividad de alta velocidad",
+    description: "Conexión a internet de banda ancha por fibra óptica para garantizar la máxima velocidad y estabilidad en todas tus actividades profesionales.",
+    image: "/features/internet.jpeg",
+  },
+  {
     id: "furniture",
     title: "Mobiliario Premium",
     subtitle: "Todo lo que necesitas",
@@ -152,13 +168,6 @@ export const featuresData = [
     subtitle: "Servicios empresariales",
     description: "Posibilidad de domiciliación social y fiscal para establecer la sede de tu empresa en una ubicación prestigiosa.",
     image: "/features/domiciliation.jpeg",
-  },
-  {
-    id: "meeting-room",
-    title: "Sala de Juntas",
-    subtitle: "Espacios para reuniones",
-    description: "10 horas mensuales de sala de juntas incluidas, perfectamente equipada para tus presentaciones y reuniones importantes.",
-    image: "/features/meeting.jpeg",
   }
 ];
 

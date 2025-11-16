@@ -4,37 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import { featuresData } from "@/data/content";
 
 export default function FeaturesSection() {
-  const [activeStep, setActiveStep] = useState(0);
   const [mobileActiveStep, setMobileActiveStep] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const sectionTop = sectionRect.top;
-      const sectionHeight = sectionRect.height;
-      const windowHeight = window.innerHeight;
-
-      // Calcular el progreso del scroll dentro de la sección
-      const scrollProgress = Math.max(0, Math.min(1, (windowHeight / 2 - sectionTop) / (sectionHeight - windowHeight)));
-      
-      // Determinar qué paso debe estar activo
-      const stepIndex = Math.floor(scrollProgress * (featuresData.length - 1));
-      const clampedIndex = Math.max(0, Math.min(featuresData.length - 1, stepIndex));
-      
-      if (clampedIndex !== activeStep) {
-        setActiveStep(clampedIndex);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Ejecutar una vez al montar
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeStep]);
 
   // Listener para scroll horizontal en móvil
   useEffect(() => {
@@ -63,15 +35,30 @@ export default function FeaturesSection() {
     }
   }, [mobileActiveStep]);
 
-  const currentStep = featuresData[activeStep];
+  // Función para formatear números con una fuente diferente
+  const formatDescriptionWithNumbers = (text: string) => {
+    // Dividir el texto por números y mantener los números
+    const parts = text.split(/(\d+)/);
+    return parts.map((part, index) => {
+      // Si es un número, envolverlo en un span con clase de fuente monospace
+      if (/^\d+$/.test(part)) {
+        return (
+          <span key={index} className="font-serif" style={{ fontSize: '1rem' }}>
+            {part}
+          </span>
+        );
+      }
+      return part;
+    });
+  };
 
   return (
     <section 
       id="features"
       ref={sectionRef}
-      className="relative md:min-h-[100vh] md:min-h-[900vh] -mb-16 md:-mb-32 lg:-mb-52 pt-16 md:pt-32"
+      className="relative pt-16 md:pt-32"
     >      
-      <div className="container mx-auto max-w-xl px-4 md:px-0 md:-mb-24">
+      <div className="container mx-auto max-w-xl px-4 md:px-0">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal w-full text-center">Todo lo que necesitas para trabajar de forma <p className="font-poppins text-2xl md:text-xl lg:text-4xl font-semibold leading-tight">profesional y cómoda.</p></h2>
       </div>
       
@@ -104,8 +91,18 @@ export default function FeaturesSection() {
                     {feature.title}
                   </h3>
                   <p className="text-gray-200 text-sm leading-relaxed">
-                    {feature.description}
+                    {formatDescriptionWithNumbers(feature.description)}
                   </p>
+                  {feature.additionalPricing && (
+                    <div className="mt-4 pt-3 border-t border-white/10">
+                      <p className="text-xs  mb-2">Horas adicionales</p>
+                      <div className="text-xs">
+                        <p>{feature.additionalPricing.hourly}</p>
+                        <p>{feature.additionalPricing.daily}</p>
+                        <p>{feature.additionalPricing.bonus}</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -127,53 +124,61 @@ export default function FeaturesSection() {
         </div>
       </div>
 
-      {/* Vista desktop - Sticky */}
-      <div className="hidden md:block sticky top-0 h-screen p-2 md:p-4 py-10 md:py-16">
-        <div className="gap-2 md:gap-4 p-6 md:p-10 pt-0 w-full h-full flex flex-col items-center bg-secondary-500 rounded-2xl md:rounded-3xl md:bg-transparent md:flex-row">
-          {/* Lado izquierdo - Contenido de texto */}
-          <div className={`h-full md:w-1/2 md:max-h-[700px] flex items-center justify-center bg-secondary-500 rounded-2xl md:rounded-3xl`}>
-            <div className="max-w-xl px-4 md:px-12 text-white">
-              <div className="mb-6 md:mb-8">
-                <h2 className="text-4xl md:text-3xl lg:text-6xl font-medium mb-4 md:mb-6 leading-tight">
-                  {currentStep.title}
-                </h2>
-                <p className="text-gray-200 text-sm md:text-md lg:text-xl leading-relaxed">
-                  {currentStep.description}
-                </p>
-              </div>
+      {/* Vista desktop - Scroll vertical con imágenes alternadas */}
+      <div className="hidden md:block">
+        <div className="container mx-auto px-4 md:px-6 py-8 md:py-20">
+          {featuresData.map((feature, index) => {
+            const isEven = index % 2 === 0;
+            const isImageLeft = isEven;
+            
+            // Variar tamaños para hacerlo más dinámico
+            const sizeVariation = index % 3;
+            const imageSize = sizeVariation === 0 ? 'md:w-[45%]' : sizeVariation === 1 ? 'md:w-[50%]' : 'md:w-[55%]';
+            const textSize = sizeVariation === 0 ? 'md:w-[55%]' : sizeVariation === 1 ? 'md:w-[50%]' : 'md:w-[45%]';
+            const maxHeight = sizeVariation === 0 ? 'max-h-[550px]' : sizeVariation === 1 ? 'max-h-[650px]' : 'max-h-[600px]';
+            const aspectRatio = sizeVariation === 0 ? 'aspect-[4/5]' : sizeVariation === 1 ? 'aspect-[3/4]' : 'aspect-[5/6]';
+            
+            return (
+              <div 
+                key={feature.id}
+                className="mb-20 md:mb-32 last:mb-0"
+              >
+                <div className={`flex flex-col md:flex-row gap-8 md:gap-12 items-stretch ${
+                  isImageLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+                }`}>
+                  {/* Imagen */}
+                  <div className={`w-full ${imageSize} ${aspectRatio} ${maxHeight} overflow-hidden rounded-3xl md:rounded-[2rem] shadow-2xl transition-transform duration-300 hover:scale-[1.02]`}>
+                    <div 
+                      className="w-full h-full bg-cover bg-center rounded-3xl md:rounded-[2rem]"
+                      style={{ backgroundImage: `url(${feature.image})` }}
+                    />
+                  </div>
 
-              {/* Indicadores de progreso */}
-              <div className="flex space-x-1 md:space-x-2">
-                {featuresData.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`h-1 rounded-full transition-all duration-500 ${
-                      index === activeStep 
-                        ? 'w-6 md:w-8 bg-white' 
-                        : index < activeStep 
-                          ? 'w-3 md:w-4 bg-white/60' 
-                          : 'w-3 md:w-4 bg-white/20'
-                    }`}
-                  />
-                ))}
+                  {/* Contenido de texto */}
+                  <div className={`w-full ${textSize} ${aspectRatio} ${maxHeight} flex items-center justify-center bg-secondary-500 rounded-3xl md:rounded-[2rem] p-8 md:p-14 shadow-2xl`}>
+                    <div className="max-w-xl text-white">
+                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-5 md:mb-7 leading-tight">
+                        {feature.title}
+                      </h2>
+                      <p className="text-gray-200 text-base md:text-lg lg:text-xl leading-relaxed mb-6">
+                        {formatDescriptionWithNumbers(feature.description)}
+                      </p>
+                      {feature.additionalPricing && (
+                        <div className="mt-6 pt-5 border-t border-white/10">
+                          <p className="text-sm md:text-base mb-3">Horas adicionales:</p>
+                          <div className="text-sm md:text-base">
+                            <p>{feature.additionalPricing.hourly}</p>
+                            <p>{feature.additionalPricing.daily}</p>
+                            <p>{feature.additionalPricing.bonus}</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              {/* Contador */}
-              <div className="mt-3 md:mt-4 lg:mt-8 text-xs md:text-sm text-gray-300">
-                <span className="font-mono">
-                  {String(activeStep + 1).padStart(2, '0')} / {String(featuresData.length).padStart(2, '0')}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Lado derecho - Imagen */}
-          <div className="relative h-full w-full aspect-[3/4] md:w-1/2 md:max-h-[700px] overflow-hidden rounded-2xl md:rounded-3xl">
-            <div 
-              className="absolute inset-0 bg-cover bg-center rounded-xl md:rounded-2xl"
-              style={{ backgroundImage: `url(${currentStep.image})` }}
-            />
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>

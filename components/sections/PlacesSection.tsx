@@ -33,7 +33,7 @@ export default function PlacesSection() {
             {placesData.places.map((place, index) => (
               <div
                 key={place.id}
-                className={`relative rounded-2xl md:rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.02] cursor-pointer ${
+                className={`relative rounded-2xl shadow-2xl md:rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.02] cursor-pointer ${
                   index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
                 }`}
                 style={{

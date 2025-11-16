@@ -59,6 +59,29 @@ export default function ContactSection() {
             </div>
           </Button>
         </div>
+
+        {/* Ubicación */}
+        <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-gray-300">
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex items-center gap-2 text-gray-600">
+              <svg 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+                className="text-gray-700"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <p className="text-base font-poppins md:text-md font-medium text-gray-700">
+                {contactData.location.address}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
