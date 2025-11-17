@@ -57,6 +57,9 @@ export default function PlacesSection() {
                   <h3 className="text-white text-2xl lg:text-3xl font-medium">
                     {place.name}
                   </h3>
+                  <p className="text-white text-base lg:text-lg font-normal">
+                    {place.description}
+                  </p>
                 </div>
 
                 {/* Icono de ampliar */}
@@ -121,6 +124,9 @@ export default function PlacesSection() {
                 <h3 className="text-white text-xl md:text-2xl lg:text-3xl font-medium mb-2">
                   {selectedPlace.name}
                 </h3>
+                <p className="text-white text-base lg:text-lg font-normal">
+                  {selectedPlace.description}
+                </p>
               </div>
             </div>
           </div>

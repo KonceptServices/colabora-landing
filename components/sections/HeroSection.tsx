@@ -25,21 +25,26 @@ export default function HeroSection() {
           backgroundPosition: "center",
         }}
       />
+      {/* Gradiente overlay para mejorar legibilidad */}
+      <div 
+        className="absolute inset-0 z-[5]"
+        style={{
+          background: 'linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 100%)'
+        }}
+      />
       {/* Logo */}
-      <div className="absolute top-7 sm:left-16 left-6">
+      <div className="absolute top-7 sm:left-16 left-6 z-10">
         {/* Texto del logo */}
         <span className="text-3xl font-black text-white">PBC</span>
       </div>
       <div className="relative z-10 flex w-full sm:px-16 px-6 flex-col items-start text-left">
         <h1 
           className="text-6xl font-medium mb-6 text-white"
-          style={{ textShadow: "0 0 30px rgba(0, 0, 0, 0.9)" }}
         >
           {heroData.title}
         </h1>
         <p 
-          className="text-xl mb-8 text-default-100"
-          style={{ textShadow: "0 0 5px rgba(0, 0, 0, 0.9)" }}
+          className="text-xl mb-8 text-white font-medium"
         >
           {heroData.subtitle}
         </p>

@@ -34,7 +34,7 @@ export const contactData = {
   title: "¿Preguntas?",
   subtitle: "Estamos aquí para ayudarte.",
   scheduleCall: {
-    text: "Programar una llamada",
+    text: "Llamanos",
     url: "#schedule"
   },
   sendMessage: {
@@ -42,7 +42,7 @@ export const contactData = {
     url: "#message"
   },
   location: {
-    address: "Poligono Ar, 115, 28760 Tres Cantos, Madrid",
+    address: "Calle Luis Mansilla, 2 Local 5, 28760 Tres Cantos, Madrid",
     mapUrl: "#"
   }
 };
@@ -78,21 +78,21 @@ export const tariffsData = {
   cards: [
     {
       id: "tipo1",
-      image: "/tariffs/1.jpeg",
+      image: "/tariffs/2.jpeg",
       description: "Perfecto para emprendedores y freelancers que buscan un espacio profesional.",
       expandedTitle: "Tipo 1 - 400€/mes",
       expandedDescription: "• Puesto de trabajo individual\n• Mobiliario premium incluido\n• Acceso a todas las instalaciones\n• Conexión fibra óptica incluida\n• Seguridad 24h y acceso 365 días\n• Recepción de correo y paquetería\n• Zona de networking y cocina\n• Servicios básicos de impresión\n• 10 horas incluidas sala de juntas\n• Domiciliación social y fiscal incluida"
     },
     {
       id: "tipo2",
-      image: "/tariffs/2.jpeg", 
+      image: "/tariffs/3.jpeg", 
       description: "Ideal para pequeños equipos que necesitan más espacio y flexibilidad.",
       expandedTitle: "Tipo 2 - 500€/mes",
       expandedDescription: "• Todos los servicios incluidos en el Tipo 1\n• Espacio ampliado para 2-3 personas\n• Mayor espacio de almacenamiento\n• 5 horas adicionales sala de juntas\n• Servicios avanzados de impresión"
     },
     {
       id: "tipo3",
-      image: "/tariffs/3.jpeg",
+      image: "/tariffs/1.jpeg",
       description: "La opción premium para empresas establecidas que buscan máximo confort.",
       expandedTitle: "Tipo 3 - 600€/mes",
       expandedDescription: "• Todos los servicios incluidos en el Tipo 2\n• Oficina privada para 4-6 personas\n• Mayor espacio de almacenamiento\n• 5 horas adicionales sala de juntas\n• Servicios premium de impresión"
@@ -176,26 +176,31 @@ export const placesData = {
     {
       id: "oficinas-privadas",
       name: "Cibeles",
+      description: "Tipo 3",
       image: "/places/1.jpeg",
     },
     {
       id: "coworking",
       name: "Alcalá",
+      description: "Tipo 1",
       image: "/places/2.jpeg",
     },
     {
       id: "sala-reuniones",
       name: "Neptuno",
+      description: "Tipo 2",
       image: "/places/3.jpeg",
     },
     {
       id: "zona-comun",
       name: "Retiro",
+      description: "Tipo 2",
       image: "/places/4.jpeg",
     },
     {
       id: "cabinas-privadas",
       name: "Debod",
+      description: "Tipo 2",
       image: "/places/5.jpeg",
     }
   ]

@@ -62,7 +62,7 @@ export default function ContactSection() {
 
         {/* Ubicación */}
         <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-gray-300">
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-6">
             <div className="flex items-center gap-2 text-gray-600">
               <svg 
                 width="20" 
@@ -76,9 +76,23 @@ export default function ContactSection() {
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                 <circle cx="12" cy="10" r="3"/>
               </svg>
-              <p className="text-base font-poppins md:text-md font-medium text-gray-700">
+              <p className="text-sm font-poppins md:text-md font-medium text-gray-700">
                 {contactData.location.address}
               </p>
+            </div>
+            
+            {/* Mapa de Google Maps */}
+            <div className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-lg">
+              <iframe
+                src={`https://maps.google.com/maps?q=40.6219424,-3.7050012&z=17&output=embed`}
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full"
+              />
             </div>
           </div>
         </div>
