@@ -84,7 +84,7 @@ export default function ContactSection() {
             {/* Mapa de Google Maps */}
             <div className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-lg">
               <iframe
-                src={`https://maps.google.com/maps?q=40.6219424,-3.7050012&z=17&output=embed`}
+                src={`https://maps.google.com/maps?q=40.622385,-3.705657&z=17&output=embed`}
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
