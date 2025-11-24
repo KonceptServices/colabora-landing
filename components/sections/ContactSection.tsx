@@ -19,10 +19,13 @@ export default function ContactSection() {
         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center max-w-2xl mx-auto">
           {/* Botón Schedule a Call */}
           <Button
-            className="w-full sm:w-auto bg-gray-300 hover:bg-gray-400 text-gray-900 font-medium text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-full min-w-[260px] md:min-w-[280px] h-14 md:h-16 flex items-center justify-between transition-all duration-300"
+            className="w-full sm:w-auto bg-gray-300 hover:bg-gray-400 text-gray-900 font-medium text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-full min-w-[260px] md:min-w-[280px] min-h-[70px] md:min-h-[80px] flex items-center justify-between transition-all duration-300"
             onPress={() => window.open(contactData.scheduleCall.url, '_blank')}
           >
-            <span className="flex-1 text-center font-poppins text-sm md:text-md">{contactData.scheduleCall.text}</span>
+            <div className="flex-1 flex flex-col items-center gap-1">
+              <span className="font-poppins text-sm md:text-md">{contactData.scheduleCall.text}</span>
+              <span className="text-xs text-gray-500 font-poppins">{contactData.scheduleCall.phone}</span>
+            </div>
             <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center ml-3 md:ml-4">
               <svg 
                 width="16" 
@@ -40,10 +43,13 @@ export default function ContactSection() {
 
           {/* Botón Send Us a Message */}
           <Button
-            className="w-full sm:w-auto bg-gray-300 hover:bg-gray-400 text-gray-900 font-medium text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-full min-w-[260px] md:min-w-[280px] h-14 md:h-16 flex items-center justify-between transition-all duration-300"
+            className="w-full sm:w-auto bg-gray-300 hover:bg-gray-400 text-gray-900 font-medium text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-full min-w-[260px] md:min-w-[280px] min-h-[70px] md:min-h-[80px] flex items-center justify-between transition-all duration-300"
             onPress={() => window.open(contactData.sendMessage.url, '_blank')}
           >
-            <span className="flex-1 text-center font-poppins text-sm md:text-md">{contactData.sendMessage.text}</span>
+            <div className="flex-1 flex flex-col items-center gap-1">
+              <span className="font-poppins text-sm md:text-md">{contactData.sendMessage.text}</span>
+              <span className="text-xs text-gray-500 font-poppins">{contactData.sendMessage.email}</span>
+            </div>
             <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center ml-3 md:ml-4">
               <svg 
                 width="16" 

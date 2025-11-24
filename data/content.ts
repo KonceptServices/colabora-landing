@@ -35,11 +35,13 @@ export const contactData = {
   subtitle: "Estamos aquí para ayudarte.",
   scheduleCall: {
     text: "Llamanos",
-    url: "#schedule"
+    url: "tel:+34913000001",
+    phone: "+34 91 300 00 01"
   },
   sendMessage: {
     text: "Enviar un mensaje",
-    url: "#message"
+    url: "mailto:info@paraninfobusinesscenter.com",
+    email: "info@paraninfobusinesscenter.com"
   },
   location: {
     address: "Calle Luis Mansilla, 2 Local 5, 28760 Tres Cantos, Madrid",
@@ -112,7 +114,7 @@ export const featuresData = [
     id: "security",
     title: "Seguridad 24h",
     subtitle: "Protección total garantizada",
-    description: "Seguridad 24 horas con personal especializado y sistemas de vigilancia avanzados para tu tranquilidad y la de tus pertenencias.",
+    description: "Seguridad 24 horas y sistemas de vigilancia avanzados para tu tranquilidad y la de tus pertenencias.",
     image: "/features/security.jpeg",
   },
   {
